@@ -28,6 +28,8 @@ if World["Lucas"] || World["jess"] => {
     Jess || Lucas => energie -= 1 
 }
 
+Personnages a des pouvoirs Attaque et Change Monde
+
 if energie == 0 => Can't rollback or changing world 
 else Can rollback
 
