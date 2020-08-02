@@ -8,9 +8,11 @@ function Appart:initialize(x, y)
     self.rooms = self.w * self.h;
 end
 
+function Appart:update(dt, camx)
+    self.x = self.x - camx
+end
+
 function Appart:draw()
-    -- On doit prendre la position de la camera
-    -- Et afficher les batiment relatif à celle ci
     self:drawoutline();
 end
 
