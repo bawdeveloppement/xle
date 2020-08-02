@@ -1,66 +1,37 @@
-appart = {
-    x, y = 0, 0;
-    w, h = love.math.random(3, 10), love.math.random(4, 20);
+local Appart = require('middleclass')('Appart');
 
-    init = function (...) -- ... = arg 
-        
-    end
-
-    update = function (dt)
-    end
-
-    draw = function ()
-        love.graphics.setColor(0.9, 0.9, 0.9, 1);
-        local i = 0
-        local j = 0
-        while i < height do
-            j = 0
-            while j < width do
-                love.graphics.line(x + j * 10, y - i * 10, x + j * 10, y -  (i * 10 + 10))
-                love.graphics.line(x + j * 10, y - i * 10, x + j * 10 + 10, y - i * 10)
-                if i ~= height - 1 then
-                    love.graphics.line(x + j * 10 + 10, y - (i * 10 + 10), x + j * 10 + 10, y - i * 10)
-                end
-                if j ~= width - 1 then
-                    love.graphics.line(x + j * 10 + 10, y - (i * 10 + 10), x + j * 10, y - (i * 10 + 10))
-                end
-                if j == width - 1 and i == height - 1 then
-                    love.graphics.line(x + j * 10 + 10, y - (i * 10 + 10), x + j * 10, y - (i * 10 + 10))
-                    love.graphics.line(x + j * 10 + 10, y - (i * 10 + 10), x + j * 10 + 10, y - i * 10)
-                end
-                j = j + 1
-            end
-            i = i + 1
-        end
-    end
-}
-
-return appart;
-
-function appart:load()
+function Appart:initialize(x, y, w, h)
+    self.x = x;
+    self.y = y;
+    self.w = w;
+    self.h = h;
+    self.rooms = w * h;
 end
 
-function appart:update()
+function Appart:draw()
+    -- On doit prendre la position de la camera
+    -- Et afficher les batiment relatif à celle ci
+    self:drawoutline();
 end
 
-function appart:draw()
+function Appart:drawoutline()
     love.graphics.setColor(0.9, 0.9, 0.9, 1);
     local i = 0
     local j = 0
-    while i < height do
+    while i < self.h do
         j = 0
-        while j < width do
-            love.graphics.line(x + j * 10, y - i * 10, x + j * 10, y -  (i * 10 + 10))
-            love.graphics.line(x + j * 10, y - i * 10, x + j * 10 + 10, y - i * 10)
-            if i ~= height - 1 then
-                love.graphics.line(x + j * 10 + 10, y - (i * 10 + 10), x + j * 10 + 10, y - i * 10)
+        while j < self.w do
+            love.graphics.line(self.x + j * 10, self.y - i * 10, self.x + j * 10, self.y -  (i * 10 + 10))
+            love.graphics.line(self.x + j * 10, self.y - i * 10, self.x + j * 10 + 10, self.y - i * 10)
+            if i ~= self.h - 1 then
+                love.graphics.line(self.x + j * 10 + 10, self.y - (i * 10 + 10), self.x + j * 10 + 10, self.y - i * 10)
             end
-            if j ~= width - 1 then
-                love.graphics.line(x + j * 10 + 10, y - (i * 10 + 10), x + j * 10, y - (i * 10 + 10))
+            if j ~= self.w - 1 then
+                love.graphics.line(self.x + j * 10 + 10, self.y - (i * 10 + 10), self.x + j * 10, self.y - (i * 10 + 10))
             end
-            if j == width - 1 and i == height - 1 then
-                love.graphics.line(x + j * 10 + 10, y - (i * 10 + 10), x + j * 10, y - (i * 10 + 10))
-                love.graphics.line(x + j * 10 + 10, y - (i * 10 + 10), x + j * 10 + 10, y - i * 10)
+            if j == self.w - 1 and i == self.h - 1 then
+                love.graphics.line(self.x + j * 10 + 10, self.y - (i * 10 + 10), self.x + j * 10, self.y - (i * 10 + 10))
+                love.graphics.line(self.x + j * 10 + 10, self.y - (i * 10 + 10), self.x + j * 10 + 10, self.y - i * 10)
             end
             j = j + 1
         end
@@ -68,4 +39,4 @@ function appart:draw()
     end
 end
 
-return apparts;
+return Appart;
