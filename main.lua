@@ -3,7 +3,8 @@ player = {}
 player.x = 0;
 player.y = 0;
 
-
+camera = {}
+camera.x = 0
 
 function love.load()
     love.window.setMode(400, 400);
@@ -25,9 +26,13 @@ function love.load()
         appart.y = dimy + 10
         table.insert(apparts, appart)
     end
+
 end
 
 function love.update(dt)
+    camera.x = camera.x + 10 * dt
+    for i=0, v in ipairs(apparts) do
+    end
 end
 
 max_appart = 1
@@ -40,10 +45,11 @@ lastheight2= love.math.random(4, 15)
 
 appartdrawn = false
 function love.draw()
-    
     -- Appartement
     for i, v in ipairs (apparts) do
-        draw_appart(v.x, v.y, v.width, v.height)
+        local ce = v.x + 10
+        if i == 1 then draw_appart(ce - camera.x, v.y, v.width, v.height)
+        else draw_appart(v.x + 10 - camera.x, v.y, v.width, v.height) end
     end
     -- Fin Appartement
 end
@@ -52,7 +58,7 @@ function draw_ville ()
 end
 
 function draw_appart (x, y, width, height)
-    love.graphics.setColor(1, 1, 1, 0.5);
+    love.graphics.setColor(0.9, 0.9, 0.9, 1);
     local i = 0
     local j = 0
     while i < height do
