@@ -14,12 +14,14 @@ function love.load()
 
     -- Init Appartements
     apparts = {}
-    for i=0,5 do
+    len = 0
+    for i=0,6 do
         appart = {}
         appart.width = love.math.random(3, 6)
         appart.height= love.math.random(4, 15)
         if i ~= 0 then
             appart.x = apparts[i].x + apparts[i].width * 10 + love.math.random(1,2) * 10 
+            len = len + appart.x
         else
             appart.x = 0
         end
@@ -30,26 +32,22 @@ function love.load()
 end
 
 function love.update(dt)
-    camera.x = camera.x + 10 * dt
-    for i=0, v in ipairs(apparts) do
-    end
+    camera.x = (camera.x + 0.1) * (dt + 0.4)
+    
+    for i, v in ipairs(apparts) do
+        v.x = v.x - camera.x
+        if v.x < 0 then
+            table.remove(apparts, i);
+        end
+    end     
 end
 
-max_appart = 1
-current_appart = 0
-lastx = 0
-lastwidth = love.math.random(3, 5)
-lastheight= love.math.random(4, 15)
-lastwidth2 = love.math.random(3, 5)
-lastheight2= love.math.random(4, 15)
 
-appartdrawn = false
 function love.draw()
+    love.graphics.print(table.getn(apparts), 0, 0);
     -- Appartement
     for i, v in ipairs (apparts) do
-        local ce = v.x + 10
-        if i == 1 then draw_appart(ce - camera.x, v.y, v.width, v.height)
-        else draw_appart(v.x + 10 - camera.x, v.y, v.width, v.height) end
+        draw_appart(v.x, v.y, v.width, v.height)
     end
     -- Fin Appartement
 end
@@ -80,5 +78,4 @@ function draw_appart (x, y, width, height)
         end
         i = i + 1
     end
-    return 1
 end
