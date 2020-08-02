@@ -21,4 +21,5 @@ end
 
 function love.draw()
     City:draw()
+    Camera:draw()
 end
