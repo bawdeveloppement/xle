@@ -5,6 +5,7 @@ function Appart:initialize(x, y)
     self.y = y;
     self.w = love.math.random(3, 6);
     self.h = love.math.random(4, 15);
+    self.space = love.math.random(1, 10) * 10;
     self.rooms = self.w * self.h;
 end
 

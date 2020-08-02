@@ -20,7 +20,7 @@ function City:initialize(w, y)
     local i = 1
     while tempw < w do
         table.insert(self.apparts, Appart:new(tempw - Camera.x, self.ground.y - self.ground.h, love.math.random(3, 6)))
-        tempw = tempw + (self.apparts[i].w * 20) + 20
+        tempw = tempw + (self.apparts[i].w * 20) + self.apparts[i].space
         i = i + 1
     end
     -- End Generation
@@ -31,8 +31,9 @@ function City:update(dt)
         v:update(dt, Camera.x)
     end
     -- Récupére la position + la largeur du dernier appart
-    local last_appartx = self.apparts[table.getn(self.apparts)].x
-    + self.apparts[table.getn(self.apparts)].w * 20 + 20;
+    local apparts_count= table.getn(self.apparts)
+    local last_appartx = self.apparts[apparts_count].x
+    + self.apparts[apparts_count].w * 20 + self.apparts[apparts_count].space;
     
     -- Self.ground.w fais référence à la taille de l'écran
     -- Nom de variable à changer en window.x
