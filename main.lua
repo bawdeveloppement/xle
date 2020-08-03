@@ -5,6 +5,7 @@ love.graphics.setDefaultFilter("nearest")
 -- Require --
 local Camera    = require('camera')
 local City      = require('city')
+local Player    = require('player')
 -- End Require --
 
 -- Global Value --
@@ -12,8 +13,6 @@ local dimx, dimy = 0, 0;
 local MainCity;
 local BgCity;
 -- End global
-
-local player = love.graphics.newImage("adventurer.png")
 
 --[[
     Si tu veux apprendre plus sur le systéme de class que j'utilise
@@ -27,15 +26,18 @@ function love.load()
     MainCity = City:new(dimx, dimy, {1,1,1,1});
     BgCity = City:new(dimx, dimy, {0.8,0.8,0.8,1}, 40);
     BgCity.debug = true -- For text debugging => City content
+    Jessica = Player:new(0, 0, MainCity.world);
 end
 
 function love.update(dt)
     Camera:update(dt)
     MainCity:update(dt)
     BgCity:update(dt)
+    Jessica:update(dt)
 end
 
 function love.draw()
     BgCity:draw()
     MainCity:draw()
+    Jessica:draw()
 end
