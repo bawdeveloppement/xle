@@ -1,12 +1,16 @@
 local Appart = require('middleclass')('Appart');
 
-function Appart:initialize(x, y)
+function Appart:initialize(x, y, color, scale)
     self.x = x;
     self.y = y;
     self.w = love.math.random(3, 6);
     self.h = love.math.random(4, 15);
+    self.scale = scale or 20
+    self.globalw = self.w * self.scale;
+    self.globalh = self.h * self.scale;
     self.space = love.math.random(1, 10) * 10;
     self.rooms = self.w * self.h;
+    self.color = color or { 50/255, 50/255, 48/255, 1 }
 end
 
 function Appart:update(dt, camx)
@@ -18,25 +22,25 @@ function Appart:draw()
 end
 
 function Appart:drawoutline()
-    love.graphics.setColor(50/255, 50/255, 48/255, 1)
-    love.graphics.rectangle("fill", self.x, self.y - self.h * 20, self.w * 20, self.h * 20)
+    love.graphics.setColor(self.color)
+    love.graphics.rectangle("fill", self.x, self.y - self.h * self.scale, self.w * self.scale, self.h * self.scale)
     love.graphics.setColor(55/255, 55/255, 51/255, 1)
     local i = 0
     local j = 0
-    while i < self.h do
+    while i < self.h  do
         j = 0
         while j < self.w do
-            love.graphics.line(self.x + j * 20, self.y - i * 20, self.x + j * 20, self.y -  (i * 20 + 20))
-            love.graphics.line(self.x + j * 20, self.y - i * 20, self.x + j * 20 + 20, self.y - i * 20)
+            love.graphics.line(self.x + j * self.scale, self.y - i * self.scale, self.x + j * self.scale, self.y -  (i * self.scale + self.scale))
+            love.graphics.line(self.x + j * self.scale, self.y - i * self.scale, self.x + j * self.scale + self.scale, self.y - i * self.scale)
             if i ~= self.h - 1 then
-                love.graphics.line(self.x + j * 20 + 20, self.y - (i * 20 + 20), self.x + j * 20 + 20, self.y - i * 20)
+                love.graphics.line(self.x + j * self.scale + self.scale, self.y - (i * self.scale + self.scale), self.x + j * self.scale + self.scale, self.y - i * self.scale)
             end
             if j ~= self.w - 1 then
-                love.graphics.line(self.x + j * 20 + 20, self.y - (i * 20 + 20), self.x + j * 20, self.y - (i * 20 + 20))
+                love.graphics.line(self.x + j * self.scale + self.scale, self.y - (i * self.scale + self.scale), self.x + j * self.scale, self.y - (i * self.scale + self.scale))
             end
             if j == self.w - 1 and i == self.h - 1 then
-                love.graphics.line(self.x + j * 20 + 20, self.y - (i * 20 + 20), self.x + j * 20, self.y - (i * 20 + 20))
-                love.graphics.line(self.x + j * 20 + 20, self.y - (i * 20 + 20), self.x + j * 20 + 20, self.y - i * 20)
+                love.graphics.line(self.x + j * self.scale + self.scale, self.y - (i * self.scale + self.scale), self.x + j * self.scale, self.y - (i * self.scale + self.scale))
+                love.graphics.line(self.x + j * self.scale + self.scale, self.y - (i * self.scale + self.scale), self.x + j * self.scale + self.scale, self.y - i * self.scale)
             end
             j = j + 1
         end
