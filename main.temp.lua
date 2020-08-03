@@ -9,8 +9,6 @@ local City      = require('city')
 
 -- Global Value --
 local dimx, dimy = 0, 0;
-local MainCity;
-local BgCity;
 -- End global
 
 local player = love.graphics.newImage("adventurer.png")
@@ -21,21 +19,17 @@ local player = love.graphics.newImage("adventurer.png")
 ]]--
 
 function love.load()
-    love.graphics.setBackgroundColor(137/255,175/255,192/255);
+    love.graphics.setBackgroundColor(20/255,24/255,82/255);
     love.window.setMode(800, 600);
     dimx, dimy = love.window.getMode();
-    MainCity = City:new(dimx, dimy, {1,1,1,1});
-    BgCity = City:new(dimx, dimy, {0.8,0.8,0.8,1}, 40);
-    BgCity.debug = true -- For text debugging => City content
+    City = City:new(dimx, dimy);
 end
 
 function love.update(dt)
     Camera:update(dt)
-    MainCity:update(dt)
-    BgCity:update(dt)
+    City:update(dt)
 end
 
 function love.draw()
-    BgCity:draw()
-    MainCity:draw()
+    City:draw()
 end
