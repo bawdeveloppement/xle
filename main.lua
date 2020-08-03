@@ -19,7 +19,7 @@ local player = love.graphics.newImage("adventurer.png")
 ]]--
 
 function love.load()
-    love.graphics.setBackgroundColor(20/255,24/255,82/255);
+    love.graphics.setBackgroundColor(137/255,175/255,192/255);
     love.window.setMode(800, 600);
     dimx, dimy = love.window.getMode();
     City = City:new(dimx, dimy);

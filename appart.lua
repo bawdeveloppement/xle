@@ -18,7 +18,9 @@ function Appart:draw()
 end
 
 function Appart:drawoutline()
-    love.graphics.setColor(1, 1, 1, 1);
+    love.graphics.setColor(50/255, 50/255, 48/255, 1)
+    love.graphics.rectangle("fill", self.x, self.y - self.h * 20, self.w * 20, self.h * 20)
+    love.graphics.setColor(55/255, 55/255, 51/255, 1)
     local i = 0
     local j = 0
     while i < self.h do

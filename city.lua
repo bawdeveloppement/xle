@@ -49,10 +49,11 @@ function City:update(dt)
 end
 
 function City:draw()
+    love.graphics.setColor(1,1,1,1)
     love.graphics.print("Camera X : " .. Camera.x,0,0)
     love.graphics.print("Appart count : " .. table.getn(self.apparts),0,15)
     love.graphics.print("Pos Appart[1] : " .. self.apparts[1].x + self.apparts[1].w * 20,0,30)
-    love.graphics.setColor(61/255,67/255,99/255,1);
+    love.graphics.setColor(60/255,89/255,102/255,1);
     love.graphics.rectangle("fill", 0, self.ground.y - self.ground.h, self.ground.w, self.ground.h)
     for i,v in ipairs(self.apparts) do
         v:draw()
