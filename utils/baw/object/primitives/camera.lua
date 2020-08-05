@@ -7,7 +7,7 @@ function Camera:initialize()
 end
 
 function Camera:update(dt)
-
+    self.config.x = 1
 end
 
 function CameraUpdateValue (table)
@@ -16,7 +16,6 @@ function CameraUpdateValue (table)
         return false
     end
 end
-
 
 -- Prevent Multi/Instanciage --
 local DefaultInstance = Camera:new();

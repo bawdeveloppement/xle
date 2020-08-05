@@ -8,7 +8,6 @@ local City      = require(_G.basedir .. 'utils.middleclass')('City')
 
 function City:initialize(w, y, color, scale, debug)
     -- Properties
-    self.world = love.physics.newWorld(0, 9.81*50, true);
     self.width = w;
     self.y = y;
     self.color = color or { 50/255, 50/255, 48/255, 1 };
@@ -22,9 +21,6 @@ function City:initialize(w, y, color, scale, debug)
     self.ground.y = y
     self.ground.w = w
     self.ground.h = 40
-    self.ground.body = love.physics.newBody(self.world, 0, y - 40)
-    self.ground.shape = love.physics.newRectangleShape(w, 40)
-    self.ground.fixture = love.physics.newFixture(self.ground.body, self.ground.shape)
     self.ground.color = { 60/255,89/255,102/255, 1}
     -- EndGround
 
@@ -32,7 +28,7 @@ function City:initialize(w, y, color, scale, debug)
     self.apparts = {}
     local tempw = 0;
     local i = 1
-    while tempw < w do
+    while (self.direction == -1 and tempw < w) or (self.direction == 1) do
         table.insert(self.apparts, Appart:new(tempw - Camera.x, self.ground.y - self.ground.h, self.color, self.appart_scale))
         tempw = tempw + (self.apparts[i].w * self.appart_scale) + self.apparts[i].space
         i = i + 1
@@ -41,7 +37,6 @@ function City:initialize(w, y, color, scale, debug)
 end
 
 function City:update(dt)
-    self.world:update(dt);
     for i,v in ipairs(self.apparts) do
         if self.direction < 0 then
             v:update(dt, Camera.x)

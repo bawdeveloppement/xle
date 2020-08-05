@@ -1,6 +1,9 @@
 _G.basedir = (...):match("(.-)[^%.]+$")
-_G.readdir = love.filesystem.getRealDirectory("main.lua")
+-- _G.readdir = love.filesystem.getRealDirectory("main.lua")
+
 -- Config --
+local Json      = require("utils.json")
+-- local Config    = Json.parse("./config.json");
 love.graphics.setDefaultFilter("nearest")
 -- End Config --
 
@@ -8,6 +11,7 @@ love.graphics.setDefaultFilter("nearest")
 local Camera    = require('utils.baw.object.primitives.camera').Default
 local City      = require('scenes.main.city')
 local Player    = require('scenes.main.player')
+local SceneManager = require('scenes.manager');
 -- End Require --
 
 -- Global Value --
@@ -20,7 +24,6 @@ local BgCity;
     Si tu veux apprendre plus sur le systéme de class que j'utilise
     https://en.wikisource.org/wiki/Module:Middleclass
 ]]--
-local http      = require("socket.http");
 
 function love.load()
     -- Settings Window
@@ -48,10 +51,3 @@ function love.draw()
     MainCity:draw()
     Jessica:draw()
 end
-
--- function love.keypressed( key, scancode, isrepeat)
---     http.request{
---         url = "http://localhost:3001/jess/"..Jessica.x, 
---         method = "GET"
---     };
--- end

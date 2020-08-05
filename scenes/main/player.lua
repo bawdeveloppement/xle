@@ -6,9 +6,6 @@ function Player:initialize(x, y, world)
     self.width = 55;
     self.height = 37;
     self.world = world;
-    self.body = love.physics.newBody(world, self.x, self.y, "dynamic")
-    self.shape = love.physics.newRectangleShape(self.width * 2, self.height * 2);
-    self.fixture = love.physics.newFixture(self.body, self.shape, 1);
     self.sprite = love.graphics.newImage("/sprites/adventurer.png")
 end
 
