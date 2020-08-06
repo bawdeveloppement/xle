@@ -26,7 +26,6 @@ function Player:getSpriteIndex(x)
 end
 
 function Player:draw()
-    
     love.graphics.setColor(1,1,1,1);
     love.graphics.draw(self.sprite, self:getSpriteIndex(0), self.x, self.y, 0, 2);
 end
