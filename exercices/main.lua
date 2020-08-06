@@ -16,7 +16,6 @@ end
 function love:update(dt)
     if love.keyboard.isDown("left") then
         player.x = player.x - 20 * dt
-
     elseif love.keyboard.isDown("right") then
         player.x = player.x + 20 * dt
     end

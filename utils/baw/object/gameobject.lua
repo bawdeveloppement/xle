@@ -13,8 +13,14 @@ function GameObject:setTag(tagName)
     self.tag = tagName;
 end
 
-function GameObject:addComponent(components)
+-- Add [parameter]components in GameObject.components 
+function GameObject:addComponents(components)
+    return {  }
+end
+
+function GameObject:addComponent(component)
     
+    return 
 end
 
 function GameObject:setDebug(shouldDebug)
@@ -25,6 +31,7 @@ function GameObject:update(dt)
 end
 
 function GameObject:draw()
+
 end
 
 return GameObject

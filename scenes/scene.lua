@@ -51,10 +51,9 @@ function Scene:draw()
             "fill", 
             width / 2 - self.title:getWidth(),
             height / 2 + self.title:getHeight() * 1.5,
-            sliderbar,
+            sliderbar * 4,
             self.title:getHeight()
         );
-        love.graphics.print(sliderbar)
     end
 end
 
