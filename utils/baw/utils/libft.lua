@@ -1,6 +1,13 @@
 --[[ Return all types of args
     The last args if for error handling, you can put a function which analyze the result
 ]]--
+function player({ TEST= 5,3,6,8})
+    for key, v in pairs(arg) do
+        print(key);
+    end
+end
+
+
 function GetTypeOfArgs(...)
     local Types = {}
     for i,v  in ipairs(arg) do
@@ -13,6 +20,19 @@ function GetTypeOfArgs(...)
         end
     end
     return Types
+end
+
+
+function t.ins(tab, toinsert)
+    local type_ins = type(toinsert)
+    if type_ins ~= "Table" then
+        tab[tab.getn(t) + 1] = toinsert
+    else
+        for key, v in pairs(toinsert) do
+            tab[#tab + 1] = v
+        end
+    end
+    return { type_ins, toinsert }
 end
 
 -- Table is Table ?
@@ -32,7 +52,7 @@ function TableCmpTypeChild(...)
     local i;
     for i, v in ipairs(Arg) do
         if v ~= "table" then
-            if enbr < 1 then
+            if enbr == 1 then
             print("The arguments : \n")
             end
             print(" - "..v)
@@ -40,7 +60,7 @@ function TableCmpTypeChild(...)
         end
     end
     if i > 2 then
-        print("Unefficient number of args.");
+        print("Is Unefficient.");
         return false
     end
     return false
