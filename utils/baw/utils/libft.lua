@@ -1,11 +1,11 @@
 --[[ Return all types of args
     The last args if for error handling, you can put a function which analyze the result
 ]]--
-function player({ TEST= 5,3,6,8})
-    for key, v in pairs(arg) do
-        print(key);
-    end
-end
+-- function player({ TEST= 5,3,6,8})
+--     for key, v in pairs(arg) do
+--         print(key);
+--     end
+-- end
 
 
 function GetTypeOfArgs(...)
@@ -47,7 +47,7 @@ end
 -- Next step let's identify if one arg between all arg is a target
 function TableCmpTypeChild(...)
     local Arg = GetTypeOfArgs(arg)
-    if ~Arg then return false end
+    if not Arg then return false end
     local enbr = 0
     local i;
     for i, v in ipairs(Arg) do

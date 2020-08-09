@@ -1,11 +1,13 @@
-local GameObject = require(_G.basedir .. "utils.middleclass");
+local GameObject = require(_G.basedir .. "utils.middleclass")("GameObject");
+local Transform = require(_G.basedir .. "utils.baw.components.transform");
 
 GameObject.static.gameobjects = {};
 
-function GameObject:initialise()
-    self.debug = false;
-    self.components = {};
-    table.insert(self.gameobjects, self);
+function GameObject:initialize()
+    self.debug      = true;
+    self.components =  {
+        Transform:new()
+    };
 end
 
 function GameObject:setTag(tagName)
@@ -13,25 +15,48 @@ function GameObject:setTag(tagName)
     self.tag = tagName;
 end
 
--- Add [parameter]components in GameObject.components 
+-- Add [parameter]components in GameObject.components
 function GameObject:addComponents(components)
-    return {  }
+    local temp_error    = {}
+    local temp_comps    = {}
+    for ki, vi in pairs(components) do
+        for kj, vj in pairs(self.components) do
+            if ki == kj then
+                table.insert(temp_error, "Already exist : "..kj)
+            else
+                table.insert(self.components, vi);
+                table.insert(temp_comps, vi);
+            end
+        end
+    end
+    return temp_comps;
+end
+
+function GameObject:getComponent(component)
+    for k, v in pairs(self.components) do
+        print(k)
+    end
+    return "can not found"
 end
 
 function GameObject:addComponent(component)
-    
-    return 
-end
-
-function GameObject:setDebug(shouldDebug)
-    self.debug = shouldDebug;
+    table.insert(self.components, component);
 end
 
 function GameObject:update(dt)
+    for k, v in ipairs(self.components) do
+        if v.update ~= nil then
+            v:update(dt)
+        end
+    end
 end
 
 function GameObject:draw()
-
+    for k, v in ipairs(self.components) do
+        if v.draw ~= nil then
+            v:draw()
+        end
+    end
 end
 
 return GameObject
