@@ -1,7 +1,11 @@
 local Vector2 = require(_G.basedir .. "utils.middleclass")("Vector2");
 
 function Vector2:initialize(x, y)
-    self.x, self.y = x, y
+    self.x, self.y = x or 0, y or 0
+end
+
+function Vector2:set(x, y)
+    self.x, self.y = x or 0, y or 0
 end
 
 Vector2.static.UP = function (y)
