@@ -28,6 +28,8 @@ Config.debug = true
     https://en.wikisource.org/wiki/Module:Middleclass
 ]]--
 
+local Vector2 = require('utils.baw.utils.Vector2');
+
 local Player = GameObject:new()
 
 function love.load()
@@ -36,7 +38,6 @@ function love.load()
     love.window.setMode(800, 600);
     dimx, dimy = love.window.getMode();
     -- End settings
-
     -- Settings the game
     -- MainCity = City:new(dimx, dimy, {1,1,1,1});
     -- BgCity = City:new(dimx, dimy, {0.8,0.8,0.8,1}, 40);
