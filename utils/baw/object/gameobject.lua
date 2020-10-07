@@ -5,9 +5,12 @@ GameObject.static.gameobjects = {};
 
 function GameObject:initialize()
     self.debug      = true;
+    -- Default
     self.components =  {
-        Transform:new()
+        Transform:new(self)
     };
+    -- Assign transform by default
+    self.transform = self.components[1];
 end
 
 function GameObject:setTag(tagName)
@@ -32,18 +35,22 @@ function GameObject:addComponents(components)
     return temp_comps;
 end
 
+-- GetComponent
 function GameObject:getComponent(component)
+    local toFind = component.name;
     for k, v in pairs(self.components) do
-        print(k)
+        if string.match(v.class.name, toFind) then
+            return v;
+        end
     end
-    return "can not found"
+    return nil --"The game object didnt have any components"
 end
 
 function GameObject:addComponent(component)
-    table.insert(self.components, component);
+    table.insert(self.components, component:new(self));
 end
 
-function GameObject:update(dt)
+function GameObject:updateComponents(dt)
     for k, v in ipairs(self.components) do
         if v.update ~= nil then
             v:update(dt)
