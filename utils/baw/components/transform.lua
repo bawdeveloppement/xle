@@ -1,4 +1,5 @@
-local Transform = require(_G.basedir .. "utils.middleclass")("Transform");
+local Component = require(_G.basedir .. "utils.baw.components.component")
+local Transform = require(_G.basedir .. "utils.middleclass")("Transform", Component);
 local Vector2 = require(_G.basedir .. "utils.baw.utils.Vector2");
 
 --[[ Implementation
@@ -38,10 +39,6 @@ function Transform:getRotation()
     return self.rotation;
 end
 
-function Transform:update(dt)
-    self.position.x = self.position.x + 1 * dt
-end
-
 function Transform:draw()
     if Config.debug ~= nil and Config.debug then
         love.graphics.print(self.position.x)
@@ -52,8 +49,8 @@ function Transform:getScale()
     return self.scale;
 end
 
-function Transform:translate(x, y)
-    self.position:set(x, y);
+function Transform:translate(vector)
+    self.position = vector;
 end
 
 return Transform
