@@ -8,6 +8,10 @@ function Vector2:set(x, y)
     self.x, self.y = x or 0, y or 0
 end
 
+function Vector2:add(x, y)
+    self:set(self.x + (x or 0), self.y + (y or 0))
+end
+
 Vector2.static.UP = function (y)
     return Vector2:new( 0, y );
 end
