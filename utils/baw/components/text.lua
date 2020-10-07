@@ -1,5 +1,5 @@
 
-local   Text = require(_G.basedir.."utils.middleclass");
+local Text = require(_G.basedir.."utils.middleclass")("Text");
 
 function Text:initialize(relative, gameObject)
     self.relative = {}
