@@ -2,6 +2,7 @@
 -- _G.readdir = love.filesystem.getRealDirectory("main.lua")
 local Json      = require("utils.json")
 _G.basedir      = (...):match("(.-)[^%.]+$")
+_G.componentDir   = _G.basedir .. "utils.baw.components.";
 love.graphics.setDefaultFilter("nearest")
 -- End Config --
 
@@ -29,8 +30,8 @@ Config.debug = true
 ]]--
 
 local Vector2 = require('utils.baw.utils.Vector2');
-
-local Player = GameObject:new()
+local Components = require('utils.baw.components.all');
+local Player = require('scenes.main.player'):new()
 
 function love.load()
     -- Settings Window
@@ -43,7 +44,12 @@ function love.load()
     -- BgCity = City:new(dimx, dimy, {0.8,0.8,0.8,1}, 40);
     -- Jessica = Player:new(0, 0, MainCity.world);
     -- End settings
-    Player:getComponent("Transform")
+
+    -- Using the getComponent function;
+    -- local search = Player:getComponent(Components.Text)
+    -- if search then
+    --     print("yeah") else print("nop")
+    -- end
 end
 
 function love.update(dt)
