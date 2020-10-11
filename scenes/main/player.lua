@@ -6,6 +6,8 @@ local RigidBody = require(_G.componentDir .. "rigidbody");
 -- TODO : GameObject:initialize(self, { RigidBody })
 -- for passing directly new components and catch if component
 -- was already added
+-- TODO : Verify if object passed in initialisation of GameObject is already assigned
+--        And if yes, try to assign values if values exist
 function Player:initialize(x, y, world)
     GameObject:initialize(self);
     self.transform:translate(Vector2:new(x, y))
