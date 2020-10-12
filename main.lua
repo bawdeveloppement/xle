@@ -1,18 +1,20 @@
--- Config --
+-- GLOBAL --
 -- _G.readdir = love.filesystem.getRealDirectory("main.lua")
-local Json      = require("utils.json")
-_G.basedir      = (...):match("(.-)[^%.]+$")
-_G.componentDir   = _G.basedir .. "utils.baw.components.";
-love.graphics.setDefaultFilter("nearest")
--- End Config --
+
+_G.baseDir      = (...):match("(.-)[^%.]+$")
+_G.engineDir      = _G.baseDir .. "engine."
+_G.assetDir      = _G.baseDir .. "assets."
+_G.componentDir   = _G.engineDir .. "baw.components.";
+-- End GLOBAL --
 
 -- Require --
 -- local Camera        = require('utils.baw.object.primitives.camera').Default
 -- local City          = require('scenes.main.city')
 -- local Player        = require('scenes.main.player')
-local MainScene     = require('scenes.main.mainscene'):new("Hello")
-local SceneManager  = require('scenes.manager'):new(MainScene);
-local GameObject    = require('utils.baw.object.gameobject');
+local Json      = require("engine.json")
+local MainScene     = require(_G.assetDir..'scenes.main.mainscene'):new("Hello")
+local SceneManager  = require(_G.engineDir..'baw.object.manager'):new(MainScene);
+local GameObject    = require('engine.baw.object.gameobject');
 -- End Require --
 
 -- Global Value --
@@ -29,10 +31,10 @@ Config.debug = true
     https://en.wikisource.org/wiki/Module:Middleclass
 ]]--
 
-local Vector2   = require('utils.baw.utils.Vector2');
-local Components= require('utils.baw.components.all');
-local Player    = require('scenes.main.player'):new()
-local Config    = require('utils.baw.utils.config');
+local Vector2   = require(_G.engineDir..'baw.utils.Vector2');
+local Components= require(_G.componentDir..'all');
+local Player    = require(_G.assetDir..'scenes.main.player'):new()
+local Config    = require(_G.engineDir..'baw.utils.config');
 
 function love.load(arg)
     for i, v in pairs(arg) do
