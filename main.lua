@@ -34,7 +34,11 @@ local Components= require('utils.baw.components.all');
 local Player    = require('scenes.main.player'):new()
 local Config    = require('utils.baw.utils.config');
 
-function love.load()
+function love.load(arg)
+    for i, v in pairs(arg) do
+        print(v)
+        print(i)
+    end
     -- Load config file
     -- TODO: Set a config file for user
     Config = Config:new()
