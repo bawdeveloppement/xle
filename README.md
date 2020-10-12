@@ -32,7 +32,7 @@ Pouvoir développer un jeu uniquement en json.
     {
       "componentId": "Transform",
       "data": {
-        "position": { x: "var_screen.width / 2 - self.width / 2"}
+        "position": { "x": "var_screen.width / 2 - self.width / 2"}
       }
     },
     {
