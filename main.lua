@@ -29,14 +29,19 @@ Config.debug = true
     https://en.wikisource.org/wiki/Module:Middleclass
 ]]--
 
-local Vector2 = require('utils.baw.utils.Vector2');
-local Components = require('utils.baw.components.all');
-local Player = require('scenes.main.player'):new()
+local Vector2   = require('utils.baw.utils.Vector2');
+local Components= require('utils.baw.components.all');
+local Player    = require('scenes.main.player'):new()
+local Config    = require('utils.baw.utils.config');
 
 function love.load()
+    -- Load config file
+    -- TODO: Set a config file for user
+    Config = Config:new()
+    -- END load
+
     -- Settings Window
     love.graphics.setBackgroundColor(137/255,175/255,192/255);
-    love.window.setMode(800, 600);
     dimx, dimy = love.window.getMode();
     -- End settings
     -- Settings the game
