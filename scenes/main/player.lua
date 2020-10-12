@@ -1,7 +1,7 @@
 local GameObject = require(_G.basedir .. "utils.baw.object.gameobject")
 local Player = require(_G.basedir .. "utils.middleclass")('Player', GameObject);
 local Vector2 = require(_G.basedir .. "utils.baw.utils.Vector2");
-local RigidBody = require(_G.componentDir .. "rigidbody");
+local Transform = require(_G.componentDir .. "transform");
 
 -- TODO : GameObject:initialize(self, { RigidBody })
 -- for passing directly new components and catch if component
@@ -12,22 +12,34 @@ function Player:initialize(x, y, world)
     GameObject:initialize(self);
     self.transform:translate(Vector2:new(x, y))
 
-    -- Todo lambda function for handling default parameter
-    self:addComponent(RigidBody)
-    self:getComponent(RigidBody):setActif(true);
-
     -- Get the component instance from the GameObject
-    self.speed = 5;
+    self.stats = {
+        speed = 5
+    };
+
+    self.maxstats = {
+        speed = 75
+    };
+
     self.width = 55;
     self.height = 37;
-    self.isground = false;
-    
-
     self.sprite = love.graphics.newImage("/sprites/adventurer.png")
 end
 
 function Player:update(dt)
     self:updateComponents(dt);
+    if      love.keyboard.isDown("q") then
+        self.transform.position:add(-(4 + 5.6 * (self.stats.speed / self.maxstats.speed)), 0);
+    end
+    if  love.keyboard.isDown("d") then
+        self.transform.position:add(4 + 5.6 * (self.stats.speed / self.maxstats.speed), 0);
+    end
+    if  love.keyboard.isDown("s") then
+        self.transform.position:add(0, 4 + 5.6 * (self.stats.speed / self.maxstats.speed));
+    end
+    if  love.keyboard.isDown("z") then
+        self.transform.position:add(0, -(4 + 5.6 * (self.stats.speed / self.maxstats.speed)));
+    end
 end
 
 function Player:getSpriteIndex(x)
