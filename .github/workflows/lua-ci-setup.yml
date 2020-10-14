@@ -32,8 +32,6 @@ jobs:
     - name: Build
       run: |
         luarocks install busted
-        luarocks install copas
-        luarocks install lua-ev scm --server=http://luarocks.org/repositories/rocks-scm/
         luarocks install moonscript
         luarocks make
     
