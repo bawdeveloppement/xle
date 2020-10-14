@@ -33,7 +33,7 @@ jobs:
       run: |
         luarocks install busted
         luarocks install moonscript
-        luarocks make https://github.com/bawdeveloppement/love2d-ecs
+        luarocks install https://github.com/bawdeveloppement/love2d-ecs
     
     - name: Test
       run: |
