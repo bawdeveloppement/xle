@@ -1,49 +1,40 @@
-# Love2d - EntityComponentSystem (Documentation en cours)
+# Love2D-ECS [![license-badge]][license]
+**Love2D-ECS** is a middleware software whose provides support for visual coding. It builds JSON files using ECS pattern that can be ported to [**`LÖVE`**][ref-1] game engine based using own interpreter, similar to Unity 2D's (for more details click [here][ref-2]).
 
-See README_us.md for english version.
+## Language
+![lua-language-badge]
 
-Cette librairie à pour but de donnés aux développeur la possibilité de développer un jeux vidéo sous le moteur Love2d avec un systéme ECS presque identique à celui d'Unity3d.
+## Build Statuses
+Contains current project status according CI workflow automation process by GitHub Actions.
 
-# Les objectifs.
+| Build                        | Status                                                                                 |
+| ---------------------------- | -------------------------------------------------------------------------------------- |
+| :rocket: **`master`**        | ![Lua CI](https://github.com/bawdeveloppement/love2d-ecs/workflows/Lua%20CI/badge.svg) |
 
-See the Project section on github for TODOLISt
+## Objectives
+**Love2D-ECS** will provides to game developer...
+- fast and ease development when working with complex code inheritances (based on OOP paradigm);
+- simple deployment of objects' structures with JSON data format;
+- ECS interpreter to allows full-control of objects during runtime; and
+- better integration of ECS pattern into LÖVE game engine.
 
-Finir les composants dynamique de base comme Transform, RigidBody, Text, Sprite.
-Les classes Config, SceneManager, KeyboardManager.
-Pouvoir développer un jeu uniquement en json.
+## Examples
+Looking for usages of **Love2D-ECS**? See some examples [here][ref-3].
 
-# SceneTemplate
-```json
-{
-  "sceneId": "MainMenu",
-  "scenesObjects": [
-    "ButtonPlay",
-    "ButtonOption",
-        "ButtonQuit",
-  ]
-}
-```
+### Contributors
+- Vincent ~ [@bawdeveloppement][vincent-ref]
+- Jessica ~[@jessicaBoisserand][jessica-ref]
+- Nádio ~ [@Devwarlt][nadio-ref]
 
-# GameObjectTemplate
-```json
-{
-  "gameObjectId": "ButtonPlay",
-  "components": [
-    {
-      "componentId": "Transform",
-      "data": {
-        "position": { "x": "var_screen.width / 2 - self.width / 2"}
-      }
-    },
-    {
-      "componentId": "Text",
-      "data": {
-        "value": "Play"
-      },
-      "events": [
-        { "eventId": "onClick", "action": "ft_changeScene('Game')"}
-      ]
-    }
-  ]
-}
-```
+[ref-1]: https://love2d.org/
+[ref-2]: https://learn.unity.com/tutorial/entity-component-system
+[ref-3]: /docs/basic-examples.md
+
+[vincent-ref]: https://github.com/bawdeveloppement
+[jessica-ref]: https://github.com/jessicaBoisserand
+[nadio-ref]: https://github.com/Devwarlt
+
+[lua-language-badge]: https://img.shields.io/badge/Lua-5.4%2B-blue?logo=lua&style=plastic
+
+[license-badge]: https://img.shields.io/badge/MIT-gray?style=plastic
+[license]: /LICENSE
