@@ -1,7 +1,9 @@
-> Est-ce que tu parles français? Checkout [**`README.md`**][readme-fr] french version.
-
 # Love2D-ECS [![license-badge]][license]
 **Love2D-ECS** is a middleware software whose provides support for visual coding. It builds JSON files using ECS pattern that can be ported to [**`LÖVE`**][ref-1] game engine based using own interpreter, similar to Unity 2D's (for more details click [here][ref-2]).
+
+## `README.md` in other languages...
+- [[:link: **link**][readme-fr]] **France**: est-ce que tu parles français?
+- [[:link: **link**][readme-br]] **Brazil**: você fala português brasileiro?
 
 ## Language
 ![lua-language-badge]
@@ -29,6 +31,7 @@ Looking for usages of **Love2D-ECS**? See some examples [here][ref-3].
 - Nádio ~ [@Devwarlt][nadio-ref]
 
 [readme-fr]: /README_fr.md
+[readme-br]: /README_br.md
 
 [ref-1]: https://love2d.org/
 [ref-2]: https://learn.unity.com/tutorial/entity-component-system
