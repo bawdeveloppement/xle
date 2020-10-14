@@ -27,13 +27,13 @@ jobs:
 #    - name: Lua Action
 #      uses: mileschou/lua-action@master
 #      with:
-#        args: lua -v*/
+#        args: lua -v
     
     - name: Build
       run: |
         luarocks install busted
         luarocks install moonscript
-        luarocks make
+        luarocks make https://github.com/bawdeveloppement/love2d-ecs
     
     - name: Test
       run: |
