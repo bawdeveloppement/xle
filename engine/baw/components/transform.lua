@@ -22,13 +22,15 @@ local Vector2 = require(_G.engineDir .. "baw.utils.Vector2");
 
 ]]--
 
-function Transform:initialize(...)
-    self.position = Vector2:new(arg.ax, arg.ay);
-    self.rotation = Vector2:new(arg.rx, arg.ry);
-    self.scale = Vector2:new(arg.sx, arg.sy);
-    -- self.child = {}
-    self.parent = nil;
-    self.gameobject = arg.gameobject;
+function Transform:initialize(entityRef, data)
+    self.entity = entityRef;
+    self.position = Vector2(data.position.x, data.position.y);
+    -- self.position = Vector2:new(arg.ax, arg.ay);
+    -- self.rotation = Vector2(data.rotation.x or 0, data.rotation.y or 0);
+    -- self.scale = Vector2:new(arg.sx, arg.sy);
+    -- -- self.child = {}
+    -- self.parent = nil;
+    -- self.gameobject = arg.gameobject;
 end
 
 function Transform:getVector()
@@ -40,9 +42,9 @@ function Transform:getRotation()
 end
 
 function Transform:draw()
-    if Config.debug ~= nil and Config.debug then
-        love.graphics.print(self.position.x)
-    end
+    -- if Config.debug ~= nil and Config.debug then
+    --     love.graphics.print(self.position.x)
+    -- end
 end
 
 function Transform:getScale()

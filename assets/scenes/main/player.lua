@@ -8,6 +8,7 @@ local Transform = require(_G.componentDir .. "transform");
 -- was already added
 -- TODO : Verify if object passed in initialisation of GameObject is already assigned
 --        And if yes, try to assign values if values exist
+
 function Player:initialize(x, y, world)
     GameObject:initialize(self);
     self.transform:translate(Vector2:new(x, y))

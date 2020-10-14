@@ -11,7 +11,7 @@ function Config:init()
     local content, size = love.filesystem.read("config.json");
     local decoded = JSON.decode(content);
     love.graphics.setDefaultFilter("nearest")
-    self.fullscreen = decoded.window.fullscreen or true
+    self.fullscreen = decoded.window.fullscreen;
     self.resolution = decoded.window.resolution;
 end
 

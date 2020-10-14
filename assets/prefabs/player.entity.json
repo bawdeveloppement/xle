@@ -1,0 +1,46 @@
+{
+    "entityId": "player",
+    "components": [
+        {
+            "componentId": "Transform",
+            "data": {
+                "position": { "x": 5, "y": 0 }
+            }
+        },
+        {
+            "componentId": "Sprite",
+            "data": {
+                "color": [255, 255, 255, 255]
+            }
+        }
+    ],
+"hooks": [
+    {
+        "hookId": "on_update",
+        "events": [
+            {
+                "eventId": "print_position",
+                "action": "getVector"
+            }
+        ]
+    },
+    {
+        "hookId": "on_draw",
+        "events": [
+            {
+                "eventId": "print_position",
+                "action": "getVector"
+            }
+        ]
+    },
+    {
+        "hookId": "on_keyboard_pressed",
+        "events": [
+            {
+                "eventId": "print_position",
+                "action": "getVector"
+            }
+        ]
+    }
+]
+}
