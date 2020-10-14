@@ -20,3 +20,21 @@ jobs:
     steps:
     - name: Install Lua/LuaJIT
       uses: leafo/gh-actions-lua@v6
+    
+    - name: Install LuaRocks
+      uses: leafo/gh-actions-luarocks@v2
+    
+    - name: Lua Action
+      uses: mileschou/lua-action@master
+      with:
+        args: lua -v
+    
+#    - name: Build
+#      run: |
+#        luarocks install busted
+#        luarocks install moonscript
+#        luarocks install https://github.com/bawdeveloppement/love2d-ecs
+    
+#    - name: Test
+#      run: |
+#        busted -o utfTerminal
