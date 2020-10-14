@@ -27,7 +27,7 @@ jobs:
     - name: Lua Action
       uses: mileschou/lua-action@master
       with:
-        args: lua /home/runner/work/love2d-ecs/love2d-ecs/main.lua
+        args: ls
     
 #    - name: Build
 #      run: |
