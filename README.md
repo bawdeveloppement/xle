@@ -1,3 +1,5 @@
+> Est-ce que tu parles français? Checkout [**`README.md`**][readme-fr] french version.
+
 # Love2D-ECS [![license-badge]][license]
 **Love2D-ECS** is a middleware software whose provides support for visual coding. It builds JSON files using ECS pattern that can be ported to [**`LÖVE`**][ref-1] game engine based using own interpreter, similar to Unity 2D's (for more details click [here][ref-2]).
 
@@ -13,7 +15,7 @@ Contains current project status according CI workflow automation process by GitH
 
 ## Objectives
 **Love2D-ECS** will provides to game developer...
-- fast and ease development when working with complex code inheritances (based on OOP paradigm);
+- fast and ease development when working with complex code inheritance (based on OOP paradigm);
 - simple deployment of objects' structures with JSON data format;
 - ECS interpreter to allows full-control of objects during runtime; and
 - better integration of ECS pattern into LÖVE game engine.
@@ -25,6 +27,8 @@ Looking for usages of **Love2D-ECS**? See some examples [here][ref-3].
 - Vincent ~ [@bawdeveloppement][vincent-ref]
 - Jessica ~[@jessicaBoisserand][jessica-ref]
 - Nádio ~ [@Devwarlt][nadio-ref]
+
+[readme-fr]: /README_fr.md
 
 [ref-1]: https://love2d.org/
 [ref-2]: https://learn.unity.com/tutorial/entity-component-system
