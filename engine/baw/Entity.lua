@@ -96,12 +96,15 @@ function Entity:update(dt)
             end
         end
     end
-    -- if self.events ~= nil and table.getn(self.events) ~= 0 then
-    --     print(table.getn(self.events))
-    --     for k, v in pairs(self.events) do
-    --         print(v.eventId)
-    --     end
-    -- end
+    if self.hooks ~= nil and table.getn(self.hooks) ~= 0 then
+        for i, v in ipairs(self.hooks) do
+            if v.hookId == "on_update" then
+                for ievent, vevent in ipairs(v.events) do
+                    print(vevent.eventId)
+                end
+            end
+        end
+    end
 end
 
 function Entity:draw()
