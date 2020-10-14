@@ -21,13 +21,4 @@ jobs:
     - name: Lua Docker Image
       uses: mileschou/lua-action@master
       with:
-        args: lua -e "os.execute('ls')"
-    
-#    - name: Build
-#      run: |
-#        luarocks install busted
-#        luarocks install moonscript
-    
-#    - name: Test
-#      run: |
-#        busted -o utfTerminal
+        args: lua main.lua
