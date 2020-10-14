@@ -32,7 +32,7 @@
         "hookId": "on_draw",
         "events": [
             {
-                "eventId": "print_position",
+                "eventId": "show_rectangle",
                 "action": {
                     "parent": "love.graphics",
                     "method": "rectangle",
