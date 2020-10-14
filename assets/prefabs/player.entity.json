@@ -20,7 +20,11 @@
         "events": [
             {
                 "eventId": "print_position",
-                "action": "getVector"
+                "action": {
+                    "parent": "Transform",
+                    "method": "getVector",
+                    "args": []
+                }
             }
         ]
     },
@@ -29,7 +33,15 @@
         "events": [
             {
                 "eventId": "print_position",
-                "action": "getVector"
+                "action": {
+                    "parent": "love.graphics",
+                    "method": "rectangle",
+                    "args": [
+                        "fill",
+                        0, 0,
+                        50, 50
+                    ]
+                }
             }
         ]
     },
