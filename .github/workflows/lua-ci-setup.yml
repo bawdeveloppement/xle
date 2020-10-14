@@ -21,7 +21,7 @@ jobs:
     - name: Lua Docker Image
       uses: mileschou/lua-action@master
       with:
-        args: ls
+        args: lua -v "/home/runner/work/love2d-ecs/main.lua"
     
 #    - name: Build
 #      run: |
