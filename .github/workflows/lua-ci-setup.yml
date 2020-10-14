@@ -24,17 +24,17 @@ jobs:
     - name: Install LuaRocks
       uses: leafo/gh-actions-luarocks@v2
     
-#    - name: Lua Action
-#      uses: mileschou/lua-action@master
-#      with:
-#        args: lua -v
+    - name: Lua Action
+      uses: mileschou/lua-action@master
+      with:
+        args: lua -v
     
-    - name: Build
-      run: |
-        luarocks install busted
-        luarocks install moonscript
-        luarocks install https://github.com/bawdeveloppement/love2d-ecs
+#    - name: Build
+#      run: |
+#        luarocks install busted
+#        luarocks install moonscript
+#        luarocks install https://github.com/bawdeveloppement/love2d-ecs
     
-    - name: Test
-      run: |
-        busted -o utfTerminal
+#    - name: Test
+#      run: |
+#        busted -o utfTerminal
