@@ -17,14 +17,8 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    steps:
-    - name: Install Lua/LuaJIT
-      uses: leafo/gh-actions-lua@v6
-    
-    - name: Install LuaRocks
-      uses: leafo/gh-actions-luarocks@v2
-    
-    - name: Lua Action
+    steps:    
+    - name: Lua Docker Image
       uses: mileschou/lua-action@master
       with:
         args: ls
