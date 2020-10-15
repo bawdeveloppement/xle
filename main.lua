@@ -7,7 +7,7 @@ _G.componentDir   = _G.engineDir .. "baw.components.";
 local BawEditor = require(_G.engineDir .. "baw.BawEditor");
 
 function love.load(arg)
-    BawEditor:new();
+    BawEditor = BawEditor:new();
 end
 
 function love.update(dt)

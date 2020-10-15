@@ -4,7 +4,8 @@ local ComponentList = {
     require(_G.componentDir .. "transform"),
     require(_G.componentDir .. "text"),
     require(_G.componentDir .. "rigidbody"),
-    require(_G.componentDir .. "component")
+    require(_G.componentDir .. "component"),
+    require(_G.componentDir .. "sprite")
 }
 
 Entity.static.entities = {};
@@ -17,6 +18,12 @@ function Entity:initialize(entityId, components, hooks, childrens)
     if hooks ~= nil then self:addHooks(hooks); end
     if childrens ~= nil then self.addChildrens(childrens) end;
 
+
+    print("AFTER COMPONENT")
+    for i, v in pairs(self.components) do
+        print(v);
+    end
+    print("END AFTER")
     Entity.addEntity(self)
 end
 
@@ -26,6 +33,16 @@ Entity.static.addEntity = function (entity)
         print(k.." "..v);
     end
     table.insert(Entity.entities, entity)
+end
+
+function Entity:getComponent(component)
+    local toFind = component.name;
+    for k, v in pairs(self.components) do
+        if string.match(v.class.name, toFind) then
+            return v;
+        end
+    end
+    return nil
 end
 
 function Entity:addComponent(componentId)
@@ -54,13 +71,17 @@ function Entity:addComponents(cmpts)
             -- We will check if the given component is already setup
             if self.components ~= nil and table.getn(self.components) ~= 0 then
                 for k2, v2 in pairs(self.components) do
+                    local count = 0
                     if v.componentId == v2.class.name then
-                        error("The component"..v.componentId.." already exits.", 2)
+                        count = count + 1
                     else
                         local iv1 = getComponentIndex(ComponentList, v.componentId);
                         if iv1 ~= nil then
                             table.insert(self.components, ComponentList[iv1]:new(self, v.data))
                         end
+                    end
+                    if count > 1 then
+                        error("The component"..v.componentId.." already exits.", 2)
                     end
                     print(v2.class.name)
                 end
@@ -77,7 +98,6 @@ function Entity:addComponents(cmpts)
         error("Argument of addComponents is null", 2);
     end
 end
-
 
 function Entity:addHooks(hooks)
     print("[BE] ADD HOOKS")
@@ -118,7 +138,7 @@ end
 function Entity:draw()
     if self.components ~= nil then
         for k, v in ipairs(self.components) do
-            if (v.draw ~= nil) then
+            if v.draw ~= nil then
                 v:draw()
             end
         end

@@ -1,4 +1,5 @@
 {
+    "$schema": "../../engine/baw/schemas/entity.schema.json",
     "entityId": "player",
     "components": [
         {
@@ -10,11 +11,12 @@
         {
             "componentId": "Sprite",
             "data": {
+                "imageUri": "/assets/sprites/adventurer.png",
                 "color": [255, 255, 255, 255]
             }
         }
     ],
-"hooks": [
+    "hooks": [
     {
         "hookId": "on_update",
         "events": [
@@ -54,5 +56,10 @@
             }
         ]
     }
-]
+    ],
+    "childrens": [
+        {
+            "entityId": "hat"
+        }
+    ]
 }

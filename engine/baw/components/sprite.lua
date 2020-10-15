@@ -1,16 +1,30 @@
+local Sprite = require(_G.engineDir.."middleclass")("Sprite");
+local Vector2 = require(_G.engineDir.."baw.utils.Vector2");
+local Transform = require(_G.componentDir.."transform");
 
-local   Sprite = require(_G.engineDir.."middleclass");
+function Sprite:initialize(entityRef, data)
+    self.entity, self.relativity, self.image = entityRef, nil, nil;
+    self.transform = self.entity:getComponent(Transform);
 
-function Sprite:initialize(x, y, imageUri, gameObject)
-    self.relative.x = 0
-    self.relative.y = 0
-    self.imageUri   = imageUri or nil
-    self.gameObject = gameObject
-    self.transform  = gameObject.getTransform()
+    self.scale = Vector2(55, 37);
+    
+    if data.relativity ~= nil then self:setRelativity(data.relativity) else
+        self.relativity = Vector2(0, 0);
+    end
 
-    if self.imageUri ~= nil then
-        self.image = love.graphics.newImage(imageUri);
-    else self.image = nil end
+    if data.scale ~= nil then self.scale = Vector2(data.scale.x, data.scale.y) end
+
+    if data.imageUri ~= nil then self:setImage(data.imageUri) end
+
+    print(self.image)
+end
+
+function Sprite:setRelativity(relativity)
+    self.relativity = Vector2(relativity.x, relativity.y);
+end
+
+function Sprite:setImage(imageUri)
+    self.image = love.graphics.newImage(imageUri);
 end
 
 function Sprite:draw()
@@ -18,17 +32,20 @@ function Sprite:draw()
     -- & Insert the referrence of the methods in GameObject.layer {}
     love.graphics.setColor(1,1,1,1);
     if self.image ~= nil then
-        -- Play some effect here and
-        love.graphics.draw(
-            self.image, 
-            self.transform.axe.x - self.relative.axe.x,
-            self.transform.axe.y - self.relative.axe.y,
-            self.transform.rotation.x - self.relative.rot.x,
-            self.transform.rotation.y - self.relative.rot.y,
-            self.transform.scale.x - self.relative.scale.x,
-            self.transform.scale.y - self.relative.scale.y
+        love.graphics.draw(self.image, self:getSpriteIndex(0), self.transform.position.x, self.transform.position.y, 0, 2);
+    else
+        love.graphics.rectangle("fill",
+            self.transform.position.x,
+            self.transform.position.y,
+            self.scale.x,
+            self.scale.y
         );
     end
+end
+
+function Sprite:getSpriteIndex(x)
+    print(self.scale.x)
+    return love.graphics.newQuad(x, x, self.scale.x, self.scale.y, self.image:getDimensions())
 end
 
 return  Sprite
