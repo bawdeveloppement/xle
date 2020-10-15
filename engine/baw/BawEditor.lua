@@ -10,16 +10,17 @@ function BawEditor:initialize()
     local decoded = Json.decode(content);
     self:TableToObject(decoded);
     Player = Entity:new(decoded.entityId, decoded.components, decoded.hooks)
+
     print("[BE] ENTITIES");
     print("Entities "..table.getn(Entity.entities));
-    -- for i, v in ipairs(Entity.entities) do
-        
-    -- end
-    for i2, v2 in ipairs(Entity) do
-        print(i2)
+    for i2, v2 in pairs(Entity.entities) do
+        print("Entity : "..v2.entityId)
     end
 end
-    
+
+
+
+
 function BawEditor:TableToObject(tjson)
     for i, v in pairs(tjson) do
         print(i,v);
@@ -27,14 +28,23 @@ function BawEditor:TableToObject(tjson)
 end
 
 function BawEditor:update(dt)
-    Player:update(dt)
-    -- for ei, ev in ipairs(Entity.entities) do
-    --     print(ev);
-    -- end
+    if self.isLoaded == true and self.isLoaded ~= nil then
+        for k, v in pairs(Entity.entities) do
+            if v.update ~= nil then
+                v:update(dt);
+            end
+        end
+    end
 end
 
 function BawEditor:draw()
-
+    if self.isLoaded == true and self.isLoaded ~= nil then
+        for k, v in pairs(Entity.entities) do
+            if v.draw ~= nil then
+                v:draw();
+            end
+        end
+    end
 end
 
 return BawEditor;

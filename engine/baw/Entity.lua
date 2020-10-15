@@ -9,15 +9,23 @@ local ComponentList = {
 
 Entity.static.entities = {};
 
-function Entity:initialize(entityId, components, hooks)
-    self.entityId, self.components, self.hooks = nil, {}, {};
+function Entity:initialize(entityId, components, hooks, childrens)
+    self.entityId, self.components, self.hooks, self.childrens = nil, {}, {}, {};
 
-    if entityId == nil then error("Entity can not be initialised empty entityId") end
+    if entityId == nil then error("Entity can not be initialised empty entityId") else self.entityId = entityId end
     if components ~= nil then self:addComponents(components); end
     if hooks ~= nil then self:addHooks(hooks); end
+    if childrens ~= nil then self.addChildrens(childrens) end;
 
-    table.insert(Entity.entities, self);
-    return self;
+    Entity.addEntity(self)
+end
+
+Entity.static.addEntity = function (entity)
+    print(entity);
+    for k, v in ipairs(entity) do
+        print(k.." "..v);
+    end
+    table.insert(Entity.entities, entity)
 end
 
 function Entity:addComponent(componentId)
@@ -100,7 +108,7 @@ function Entity:update(dt)
         for i, v in ipairs(self.hooks) do
             if v.hookId == "on_update" then
                 for ievent, vevent in ipairs(v.events) do
-                    print(vevent.eventId)
+                    -- print(vevent.eventId)
                 end
             end
         end
