@@ -6,6 +6,8 @@ _G.componentDir   = _G.engineDir .. "baw.components.";
 
 local Json = require("engine.json");
 
+-- Link to lua callbacks
+-- https://love2d.org/wiki/love
 local callbacks = {
     load = {
         args = nil,
