@@ -4,13 +4,6 @@
 ## Langue
 ![lua-language-badge]
 
-## Statuts de construction
-Contient l'état actuel du projet selon le processus d'automatisation du flux de travail CI par les GitHub Actions.
-
-| Build                        | Status                                                                                 |
-| ---------------------------- | -------------------------------------------------------------------------------------- |
-| :rocket: **`master`**        | ![Lua CI](https://github.com/bawdeveloppement/love2d-ecs/workflows/Lua%20CI/badge.svg) |
-
 ## Objectifs
 **Love2D-ECS** fournira au développeur de jeux...
 - développement rapide et facile lorsque vous travaillez avec l'héritage de code complexe (basé sur le paradigme OOP);
