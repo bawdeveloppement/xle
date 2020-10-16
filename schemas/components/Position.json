@@ -1,0 +1,8 @@
+{
+    "$schema": "../component.schema.json",    
+    "name": "Position",
+    "data": {
+        "x": 0,
+        "y": 0
+    }
+}
