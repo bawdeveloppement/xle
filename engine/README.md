@@ -4,4 +4,4 @@ If you have the objective to make your own engine -
 Create a directory like this ${projectDir}/engine/${engineName}
 
 Thanks to Enrique García Cota for providing Middleclass. See middleclass.lua for license.
-Thanks to RXI for providing json utility class. See json.lua for license.
+Thanks to Jeffrey Friedl for providing json utility class. See json.lua for license.
