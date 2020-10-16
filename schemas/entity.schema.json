@@ -1,4 +1,36 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "Entity"
+    "$id": "Entity",
+    "properties": {
+        "name": {
+            "type": "string",
+            "$comment": "Name of the entity"
+        },
+        "components": {
+            "type": "array",
+            "$comment": "List of all components",
+            "items": [
+                {
+                    "type": "object",
+                    "$comment": "Target component",
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "$comment": "Name of the target component"
+                        },
+                        "data": {
+                            "type": "object",
+                            "$comment": "Override the default data of the component assigned to the entity"
+                        }
+                    },
+                    "required": [
+                        "name"
+                    ]
+                }
+            ]
+        }
+    },
+    "required": [
+        "name"
+    ]
 }

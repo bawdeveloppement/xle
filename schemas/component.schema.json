@@ -1,4 +1,15 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "Component"
+    "$id": "Component",
+    "$comment": "Component template",
+    "properties": {
+        "name": {
+            "type": "string",
+            "$comment": "The name of the component"
+        },
+        "data": {
+            "type": "object",
+            "$comment": "Data of the component"
+        }
+    }
 }
