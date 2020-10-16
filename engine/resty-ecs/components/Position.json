@@ -1,5 +1,5 @@
 {
-    "$schema": "../component.schema.json",    
+    "$schema": "../schemas/component.schema.json",    
     "name": "Position",
     "data": {
         "x": 0,

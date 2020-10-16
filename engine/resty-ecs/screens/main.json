@@ -1,5 +1,5 @@
 {
-    "$schema": "../screen.schema.json",
+    "$schema": "../schemas/screen.schema.json",
     "isDefault": false,
     "entities": [
         "Player"

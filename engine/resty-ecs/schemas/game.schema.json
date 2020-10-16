@@ -1,0 +1,30 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "Game",
+    "$comment": "A game schema for initialising a game locally or remote",
+    "properties": {
+        "url": {
+            "type": "string",
+            "$comment": "The url of the game where the engine should request all json-data"
+        },
+        "url_config": {
+            "type": "string",
+            "$comment": "The url of the game config"
+        },
+        "screen": {
+            "type": "array",
+            "$comment": "List of screens of the game",
+            "items": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "$comment": "The name of the screen"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

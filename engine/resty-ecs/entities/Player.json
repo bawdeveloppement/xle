@@ -1,5 +1,5 @@
 {
-    "$schema": "../entity.schema.json",
+    "$schema": "../schemas/entity.schema.json",
     "name": "Player",
     "components": [
         {
