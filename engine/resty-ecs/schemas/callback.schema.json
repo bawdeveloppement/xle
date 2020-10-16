@@ -4,11 +4,13 @@
     "properties": {
         "namespace": {
             "type": "string",
-            "default": "love"
+            "default": "love",
+            "$comment": "Namespace can be _G | love | custom"
         },
         "name": {
             "type": "string",
-            "default": "load"
+            "default": "load",
+            "$comment": "name of callback children of the namespace"
         }
     },
     "additionalProperties": true
