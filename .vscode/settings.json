@@ -3,6 +3,9 @@
         "love"
     ],
     "Lua.diagnostics.disable": [
-        "undefined-global"
+        "undefined-global",
+        "unused-function",
+        "unused-local",
+        "lowercase-global"
     ]
 }
