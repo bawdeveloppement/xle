@@ -1,6 +1,8 @@
 local Engine = require(_G.engineDir .. "middleclass")("Engine");
 local Component = require(_G.engineDir .. "resty-ecs.component");
 local Entity = require(_G.engineDir .. "resty-ecs.entity");
+local System = require(_G.engineDir .. "resty-ecs.system");
+
 local Json = require(_G.engineDir .. "json");
 
 function Engine:initialize(path)
@@ -27,6 +29,9 @@ function Engine:loadFiles()
             if v == "entities" then
                 self:loadEntity(decoded_data)
             end
+            if v == "systems" then
+                self:loadSystem(decoded_data)
+            end
         end
     end
 end
@@ -42,7 +47,12 @@ end
 
 function Engine:loadEntity(ent)
     local obj = Entity:new(ent, self.components)
-    table.insert(self.components, obj)
+    table.insert(self.entities, obj)
+end
+
+function Engine:loadSystem(sys)
+    local obj = System:new(sys, self.entities);
+    table.insert(self.systems, obj)
 end
 
 return Engine
