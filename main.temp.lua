@@ -99,13 +99,32 @@ local callbacks = {
 for _, v in ipairs(callbacks) do
     love[v] = function (...)
         for _, screen in pairs(Screen.screens) do
-            if screen[v] ~= nil then
-                print(v)
-            end
+            -- if screen[v] ~= nil and  then
+            --     print(v)
+            -- end
         end
     end
 end
 
+
+local Ent = {}
+local Composant1 = {
+    name = "transform",
+    data = "test"
+}
+local Composant2 = {
+    name = "transform",
+    data = "test"
+}
+local MetaComposant = {}
+
+MetaComposant.__add = function (...)
+    for k, v in pairs(arg) do
+        print(k, v);
+    end
+end
+
+setmetatable(Composant, MetaComposant)
 
 local test = { "ezez", "sadazea", "!" }
 print(unpack(test))

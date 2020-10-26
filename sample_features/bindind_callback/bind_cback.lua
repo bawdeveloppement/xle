@@ -8,28 +8,6 @@ local Json = require("engine.json");
 
 -- Link to lua callbacks
 -- https://love2d.org/wiki/love
-local callbacks = {
-    load = {
-        args = nil,
-        actions = {
-            {
-                id="print",
-                nsp="global",
-                arg="dazdza"
-            }
-        }
-    },
-    update = {
-        args = nil,
-        actions = {
-            {
-                id="rectangle",
-                nsp="graphics",
-                args={"fill", 0, 0, 50, 50}
-            }
-        }
-    }
-}
 
 for callback_key, callback_value in pairs(callbacks) do
     love[callback_key] = function ()

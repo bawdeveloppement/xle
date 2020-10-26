@@ -4,5 +4,10 @@
         "method": "abc",
         "params": ["Hello, world!", "What's up?", 10]
     },
-    "lua_script": "local test = 123; print(test, 'This code is from JSON :)');"
+    "lua_script": "local test = 123; print(test, 'This code is from JSON :)');",
+    "action": [
+        {
+            
+        }
+    ]
 }

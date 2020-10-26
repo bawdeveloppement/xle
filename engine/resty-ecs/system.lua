@@ -1,6 +1,6 @@
 local System = require(_G.engineDir .. "middleclass")("System");
 
-function System:initialize(data, entities)
+function System:initialize(data)
     for k, v in pairs(data) do
         if k ~= "$schema" then
             if k == "callbacks" then
@@ -14,17 +14,22 @@ function System:initialize(data, entities)
         end
     end
     print("[LEE] Entities")
-    for i, v in ipairs(entities) do
-        for ke, ve in pairs(v) do
-            print(ke, ve)
-        end
+    for index, entity in ipairs(_G.Engine.Entity.entities) do
+        self:debugEntity(entity)
     end
+    table.insert(System.entities, self);
 end
+
+System.static.entities = {}
 
 function System:setupCallback(callback)
     for kc, vc in pairs(callback) do
         print(vc)
     end
+end
+
+function System:debugEntity(entity)
+    entity:debug()
 end
 
 return System;
