@@ -13,8 +13,13 @@ function Entity:getComponent(arg) -- name or class
     return nil
 end
 
+function Entity:load()
+
+end
+
 -- Create and Cache the target entity child of EntityClass
 function Entity:create(ent)
+    -- If the entity don't exist we create the class & return the instance
     if not Entity:doExist(ent) then
         local newEntity = Class(ent.name, Entity);
         newEntity.initialize = function (self, data)
@@ -32,7 +37,7 @@ function Entity:create(ent)
 end
 
 function Entity:doExist(ent)
-    for k, v in pairs(self.entities) do
+    for k, v in pairs(Entity.entities) do
         if k == ent.name then
             return true
         end

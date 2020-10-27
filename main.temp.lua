@@ -52,6 +52,7 @@ local systemInstances = {};
 local MainScreen = Screen:new("Hello")
 
 function love.load(arg)
+    love.graphics.setDefaultFilter("nearest");
     table.insert(entityInstances, Entity:create(Rogue))
     for _, v in ipairs(entityInstances) do
         print(v)

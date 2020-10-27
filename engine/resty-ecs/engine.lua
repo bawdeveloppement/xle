@@ -1,3 +1,5 @@
+-- DEPRECATED --
+
 local Engine = require(_G.engineDir .. "middleclass")("Engine");
 
 local Json = require(_G.engineDir .. "json");
