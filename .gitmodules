@@ -1,3 +1,6 @@
 [submodule "api"]
 	path = api
 	url = https://github.com/bawdeveloppement/xle-api
+[submodule "client"]
+    path = client
+    url = https://github.com/bawdeveloppement/xle-client
