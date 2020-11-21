@@ -1,0 +1,13 @@
+{
+    "$schema": "../schemas/entity.schema.json",
+    "name": "Player",
+    "components": [
+        {
+            "name": "Position",
+            "data": {
+                "x": 50,
+                "y": 50
+            }
+        }
+    ]
+}

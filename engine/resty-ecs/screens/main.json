@@ -1,0 +1,10 @@
+{
+    "$schema": "../schemas/screen.schema.json",
+    "isDefault": false,
+    "entities": [
+        "Player"
+    ],
+    "systems": [
+        "Move"
+    ]
+}

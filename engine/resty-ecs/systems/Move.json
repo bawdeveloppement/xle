@@ -1,0 +1,23 @@
+{
+    "$schema": "../schemas/system.schema.json",
+    "name": "Move",
+    "components": [
+        "Position"
+    ],
+    "callbacks": [
+        {
+            "name": "update",
+            "args": ["dt"],
+            "todos": [
+                {
+                    "name": "assign",
+                    "args": [
+                        {
+                            
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

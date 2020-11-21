@@ -1,0 +1,11 @@
+{
+    "$schema": "./schemas/main.schema.json",
+    "callbacks": [
+        {
+            "name": "update",
+            "args": [
+                "dt"
+            ]
+        }
+    ]
+}
