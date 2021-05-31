@@ -1,4 +1,4 @@
-local file_path = "sample_features\\dynamic_callback\\sample.json"
+local file_path = "sample.json"
 local file = io.open(file_path, "r")
 
 if not file then print("File '".. file_path .. "' not found!") return end
@@ -7,7 +7,7 @@ local file_content = file:read "*all"
 
 io.close(file)
 
-local json = require("engine.json")
+local json = require("json")
 local obj = json:decode(file_content)
 local function join_strs(arr)
     local strs = {}
@@ -24,6 +24,8 @@ print("\a obj[\"lua_script\"] -> " .. obj["lua_script"] .. "\n")
 local obj_method = obj["callback"]["method"]
 local obj_params = obj["callback"]["params"]
 local obj_script = obj["lua_script"]
+
+print(obj_params)
 
 function abc(args)
     local a = args[1]

@@ -3,7 +3,8 @@
     "$id": "System",
     "properties": {
         "name": {
-            "type": "string"
+            "type": "string",
+            "$comment": "the name of system"
         },
         "components": {
             "type": "array",
@@ -11,7 +12,8 @@
                 {
                     "type": "string"
                 }
-            ]
+            ],
+            "$comment": "The system will affect only entity with theses components"
         },
         "callbacks": {
             "type": "array",
@@ -39,7 +41,8 @@
                         }
                     }
                 }
-            ]
+            ],
+            "$comment": "Here we define on which callbacks we would like to bind hook or action"
         }
     }
 }
