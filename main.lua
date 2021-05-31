@@ -87,16 +87,17 @@ local SystemMove = {
     callbacks = {
         {
             name = "update"
+            execute = "print"
         }
     }
 }
 
-local MainScreenData = {
-    name = "MainMenu",
-    entities = { Rogue },
-    -- To change in string for Cached["systems"]["SystemMove"];
-    systems = { SystemMove }
-}
+-- local MainScreenData = {
+--     name = "MainMenu",
+--     entities = { Rogue },
+--     -- To change in string for Cached["systems"]["SystemMove"];
+--     systems = { SystemMove }
+-- }
 
 local MainScreen = Screen:new(
     "Main Menu",

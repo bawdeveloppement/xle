@@ -30,7 +30,7 @@ function System:create(sys)
             newSystem[v_callb.name] = function (self, ...)
                 -- Here we will call all action that the data say to do
                 for i, v in ipairs(pack(...)) do
-                    print(v)
+                    print(type(v) )
                 end
             end
         end

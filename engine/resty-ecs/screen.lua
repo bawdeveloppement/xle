@@ -17,8 +17,6 @@ function Screen:initialize(name, entities, systems)
 
     if #Screen.screensInstances == 0 then self.active = true else self.active = false end
     table.insert(Screen.screensInstances, self);
-
-
 end
 
 -- Default assets of the screen at this moment
@@ -67,8 +65,9 @@ function Screen:update(dt)
         end
     else
         for i, v in ipairs(self.systemsInstances) do
-            v["update"](v, dt, "dazza");
             if v["update"] ~= nil and type(v["update"]) == "function" then
+                v["update"](v, dt, "dazza");
+                -- print(true)
             end
         end
     end
